@@ -71,12 +71,14 @@ export function SecondHandDealsSection({
           </div>
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-heading text-[#000000] tracking-tight">
-            Buy & Sell Certified Pre-Owned Electronics<span className="text-[#C6A76B]">.</span>
+            Buy & Sell Certified Pre-Owned Electronics
+            <span className="text-[#C6A76B]">.</span>
           </h1>
 
           <p className="text-sm sm:text-base text-[#666666] leading-relaxed max-w-2xl mx-auto font-normal">
-            25-point workshop testing on every pre-owned device in Nagpur. Instant fair appraisals
-            for sellers and verified, reliable electronics for buyers.
+            25-point workshop testing on every pre-owned device in Nagpur.
+            Instant fair appraisals for sellers and verified, reliable
+            electronics for buyers.
           </p>
         </div>
 
@@ -126,7 +128,7 @@ export function SecondHandDealsSection({
             </div>
 
             <div className="mt-6 pt-4 border-t border-[#333333] flex items-center justify-between text-xs text-[#CCCCCC]">
-              <span>Visit counter: Mon–Sat, 10:00 AM – 8:30 PM</span>
+              <span>Visit counter: Tuesday–Sunday, 10:00 AM – 9:00 PM</span>
               <span className="text-[#C6A76B] font-bold">In-Shop Deals</span>
             </div>
           </div>
