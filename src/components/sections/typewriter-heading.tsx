@@ -58,8 +58,10 @@ export function TypewriterHeading({
         }, deleteSpeed);
       } else {
         // Move to the next sentence
-        setIsDeleting(false);
-        setSentenceIndex((prev) => (prev + 1) % sentences.length);
+        timer = setTimeout(() => {
+          setIsDeleting(false);
+          setSentenceIndex((prev) => (prev + 1) % sentences.length);
+        }, 50);
       }
     }
 

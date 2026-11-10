@@ -71,21 +71,6 @@ export function InquiryDashboard() {
   const [isUpdating, startUpdateTransition] = useTransition();
   const [retryMessage, setRetryMessage] = useState<string | null>(null);
 
-  // Check saved PIN in sessionStorage
-  useEffect(() => {
-    const savedPin = sessionStorage.getItem("dashboard_pin");
-    if (savedPin) {
-      setPin(savedPin);
-      fetchInquiries(savedPin);
-    }
-  }, []);
-
-  const handleAuth = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!pin) return;
-    fetchInquiries(pin);
-  };
-
   const fetchInquiries = async (accessPin: string) => {
     setLoading(true);
     setError(null);
@@ -115,6 +100,21 @@ export function InquiryDashboard() {
     } finally {
       setLoading(false);
     }
+  };
+
+  // Check saved PIN in sessionStorage
+  useEffect(() => {
+    const savedPin = typeof window !== "undefined" ? sessionStorage.getItem("dashboard_pin") : null;
+    if (savedPin) {
+      setPin(savedPin);
+      fetchInquiries(savedPin);
+    }
+  }, []);
+
+  const handleAuth = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!pin) return;
+    fetchInquiries(pin);
   };
 
   const fetchActivities = async (inquiryId: string) => {

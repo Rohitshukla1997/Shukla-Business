@@ -7,9 +7,18 @@ import { siteConfig } from "@/config/site";
 import { MapPin, Phone, Mail, Clock, Store, ExternalLink } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Contact & Workshop Location",
+  title: "Contact & Workshop Location Nagpur | Shukla Services",
   description:
-    "Visit Shukla Electronic & Computer Services in Nagpur, Maharashtra. Find workshop hours, address, directions, and submit inquiry.",
+    "Visit our physical electronics repair workshop in Tukdoji Complex, Nagpur (Tue–Sun, 10 AM – 9 PM). Phone: +91 98765 43210. Direct check-in & web consultations.",
+  alternates: {
+    canonical: "/contact",
+  },
+  openGraph: {
+    title: "Contact & Workshop Location | Shukla Services Nagpur",
+    description:
+      "Physical workshop counter in Nagpur for electronics repair & digital solutions. Get directions and submit service inquiries.",
+    url: `${siteConfig.url}/contact`,
+  },
 };
 
 export default function ContactPage() {

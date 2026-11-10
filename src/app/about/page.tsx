@@ -6,10 +6,21 @@ import { Button } from "@/components/shared/button";
 import { TypewriterHeading } from "@/components/sections/typewriter-heading";
 import { Store, Code, HeartHandshake, ShieldCheck } from "lucide-react";
 
+import { siteConfig } from "@/config/site";
+
 export const metadata: Metadata = {
-  title: "About Us | Shukla Electronic & Computer Services",
+  title: "About Us | Hardware Craft & Software Engineering in Nagpur",
   description:
-    "Learn about our dual-division model in Nagpur: combining physical electronics repair with cutting-edge software engineering.",
+    "Discover Shukla Electronic & Computer Services in Nagpur. Founded on component-level electronics craft, transparent workbench diagnostics, and custom software engineering.",
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "About Us | Shukla Electronic & Computer Services Nagpur",
+    description:
+      "Combining physical electronics repair craft with modern software engineering in Nagpur.",
+    url: `${siteConfig.url}/about`,
+  },
 };
 
 export default function AboutPage() {

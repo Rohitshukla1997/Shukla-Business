@@ -1,16 +1,29 @@
 export const siteConfig = {
   name: "Shukla Electronic & Computer Services",
-  shortName: "Shukla Services",
+  shortName: "Shukla Electronic",
   description:
-    "Reliable electronics repair and thoughtful digital solutions for individuals and growing businesses.",
-  url: "https://shuklaservices.com",
-  ogImage: "https://shuklaservices.com/og.jpg",
+    "Expert component-level electronics repair, laptop micro-soldering, LED TV service, and modern Next.js website development in Nagpur, Maharashtra.",
+  url: "https://shuklaelectronic.vercel.app",
+  ogImage: "https://shuklaelectronic.vercel.app/og-image.jpg",
   contact: {
-    email: "sanjayshukla1967@gmail.com",
+    email: "sanjay.shukla1967@gmail.com",
     phone: "+91 98765 43210",
     address:
       "Shukla Electronic & Computer Services, Near KMG Hospital Tukdoji Complex, Nagpur, Maharashtra 440024, India",
-    workingHours: "Tuesday – Sunday: 10:30 AM – 9:00 PM (Monday Closed)",
+    workingHours: "Tuesday – Sunday: 10:00 AM – 9:00 PM (Monday Closed)",
+    schedule: {
+      days: [
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ],
+      opens: "10:00",
+      closes: "21:00",
+      closedDay: "Monday",
+    },
     coordinates: {
       latitude: 21.1196276,
       longitude: 79.1048427,
@@ -23,7 +36,7 @@ export const siteConfig = {
       name: "Electronics Repair",
       tagline: "Component-Level Repair & Hardware Restoration",
       policyNote:
-        "All repairs are strictly conducted in-store at our workshop. We do not provide home visits, doorstep pickup, or delivery.",
+        "All repairs are strictly conducted in-store at our workshop in Nagpur. We do not provide home visits, doorstep pickup, or delivery.",
     },
     digital: {
       name: "Digital Solutions",

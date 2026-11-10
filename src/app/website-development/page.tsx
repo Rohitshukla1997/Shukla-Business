@@ -6,10 +6,29 @@ import { SectionHeading } from "@/components/shared/section-heading";
 import { Button } from "@/components/shared/button";
 import { TypewriterHeading } from "@/components/sections/typewriter-heading";
 
+import { siteConfig } from "@/config/site";
+
 export const metadata: Metadata = {
-  title: "Website Development | Modern Business Websites",
+  title: "Website Development in Nagpur | Custom Next.js Business Websites",
   description:
-    "Fast, conversion-focused, and beautifully architected business websites with Champagne Gold elegance.",
+    "Professional website development in Nagpur. We engineer fast, clean Next.js business websites, editorial UI/UX, and local SEO systems with sub-second performance.",
+  keywords: [
+    "Website development in Nagpur",
+    "Next.js website development",
+    "Business website development",
+    "Web design Nagpur",
+    "Local SEO Nagpur",
+    "Full stack web development",
+  ],
+  alternates: {
+    canonical: "/website-development",
+  },
+  openGraph: {
+    title: "Website Development in Nagpur | Shukla Digital Solutions",
+    description:
+      "High-performance Next.js business websites, modern editorial design, and local SEO systems in Nagpur.",
+    url: `${siteConfig.url}/website-development`,
+  },
 };
 
 export default function WebsiteDevelopmentPage() {

@@ -5,6 +5,9 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { QueryProvider } from "@/components/providers/query-provider";
 import { siteConfig } from "@/config/site";
+import { getStructuredData } from "@/config/seo-schema";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -25,23 +28,74 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} | Premium Technology & Electronics Engineering`,
-    template: `%s | ${siteConfig.name}`,
+    default: `${siteConfig.name} | Electronics Repair & Web Development Nagpur`,
+    template: `%s | ${siteConfig.shortName}`,
   },
   description: siteConfig.description,
-  metadataBase: new URL(siteConfig.url),
+  keywords: [
+    "Electronics repair in Nagpur",
+    "Laptop repair in Nagpur",
+    "Computer repair in Nagpur",
+    "LED TV repair in Nagpur",
+    "Electronic PCB repair",
+    "Website development in Nagpur",
+    "Next.js website development",
+    "Business website development",
+    "SMPS power board repair",
+    "Micro soldering repair Nagpur",
+  ],
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  formatDetection: {
+    email: true,
+    address: true,
+    telephone: true,
+  },
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: siteConfig.name,
+    title: `${siteConfig.name} | Electronics Repair & Web Development`,
     description: siteConfig.description,
     url: siteConfig.url,
     siteName: siteConfig.name,
     locale: "en_IN",
     type: "website",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Shukla Electronic & Computer Services - Hardware Repair & Web Development in Nagpur",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteConfig.name} | Electronics Repair & Web Development`,
+    description: siteConfig.description,
+    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icon.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
   },
 };
 
@@ -50,56 +104,26 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: siteConfig.name,
-    description: siteConfig.description,
-    url: siteConfig.url,
-    telephone: siteConfig.contact.phone,
-    hasMap: siteConfig.contact.googleMapsUrl,
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: siteConfig.contact.coordinates.latitude,
-      longitude: siteConfig.contact.coordinates.longitude,
-    },
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Shukla Electronic & Computer Services",
-      addressLocality: "Nagpur",
-      addressRegion: "Maharashtra",
-      postalCode: "440024",
-      addressCountry: "IN",
-    },
-    openingHoursSpecification: [
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-        ],
-        opens: "10:00",
-        closes: "20:30",
-      },
-    ],
-  };
+  const structuredData = getStructuredData();
 
   return (
-    <html lang="en" data-scroll-behavior="smooth" className={`${spaceGrotesk.variable} ${inter.variable} ${manrope.variable}`}>
+    <html
+      lang="en"
+      data-scroll-behavior="smooth"
+      className={`${spaceGrotesk.variable} ${inter.variable} ${manrope.variable}`}
+    >
       <body className="min-h-screen flex flex-col bg-[#FFFFFF] text-[#000000] antialiased selection:bg-[#000000] selection:text-[#FFFFFF]">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
         <QueryProvider>
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />
         </QueryProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

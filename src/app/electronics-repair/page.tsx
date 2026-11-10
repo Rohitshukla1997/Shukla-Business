@@ -10,9 +10,27 @@ import { servicesData } from "@/config/services";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Electronics & Computer Repair | Physical Workshop Nagpur",
+  title: "Electronics & Computer Repair in Nagpur | In-Store Workshop",
   description:
-    "Professional in-store component-level repair for laptops, desktop computers, television sets, audio equipment, and appliance circuit boards in Nagpur.",
+    "Expert component-level electronics repair in Nagpur. Laptop logic board micro-soldering, desktop computer repair, 4K LED TV service, and appliance PCB diagnostics. Physical workshop visit only.",
+  keywords: [
+    "Electronics repair in Nagpur",
+    "Laptop repair in Nagpur",
+    "Computer repair in Nagpur",
+    "LED TV repair in Nagpur",
+    "Motherboard repair Nagpur",
+    "SMPS power supply repair",
+    "PCB repair Nagpur",
+  ],
+  alternates: {
+    canonical: "/electronics-repair",
+  },
+  openGraph: {
+    title: "Electronics & Computer Repair in Nagpur | Shukla Services",
+    description:
+      "Expert component-level electronics repair in Nagpur. Laptop logic board micro-soldering, 4K LED TV service, and appliance PCB diagnostics.",
+    url: `${siteConfig.url}/electronics-repair`,
+  },
 };
 
 export default function ElectronicsRepairPage() {
