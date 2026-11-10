@@ -21,9 +21,9 @@ export default function ElectronicsRepairPage() {
   return (
     <>
       {/* Editorial Header */}
-      <section className="pt-20 pb-16 bg-[#FFFFFF] border-b border-[#E5E5E5]">
+      <section className="pt-8 pb-12 md:pt-10 md:pb-14 bg-[#FFFFFF] border-b border-[#E5E5E5]">
         <Container size="wide">
-          <div className="max-w-3xl space-y-5">
+          <div className="max-w-3xl space-y-4">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F4F4F4] border border-[#C6A76B]/40 text-[#C6A76B] text-xs font-bold uppercase tracking-wider">
               Division A • Physical Workshop Services Only
             </span>

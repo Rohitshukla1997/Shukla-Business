@@ -4,9 +4,12 @@ import {
   Code,
   Cpu,
   Store,
-  ShieldCheck,
+  Tv,
+  Laptop,
+  CircuitBoard,
   ArrowRight,
-  Sparkles,
+  ShieldCheck,
+  CheckCircle2,
 } from "lucide-react";
 import { Container } from "@/components/shared/container";
 import { SectionWrapper } from "@/components/shared/section-wrapper";
@@ -14,11 +17,46 @@ import { Button } from "@/components/shared/button";
 import { TVDisassemblySection } from "@/components/sections/tv-disassembly-section";
 import { TypewriterHeading } from "@/components/sections/typewriter-heading";
 
+const featuredRepairCards = [
+  {
+    id: "laptops",
+    icon: Laptop,
+    title: "Computers & Laptop",
+    tagline: "Chip-level BGA & logic boards",
+    badge: "In-Store",
+    href: "/electronics-repair#laptops",
+  },
+  {
+    id: "tvs",
+    icon: Tv,
+    title: "LED TVs & Audio Systems",
+    tagline: "SMPS power boards & backlights",
+    badge: "Workbench",
+    href: "/electronics-repair#tv",
+  },
+  {
+    id: "appliances",
+    icon: CircuitBoard,
+    title: "Electronic Appliance PCBs",
+    tagline: "Inverter circuits & controllers",
+    badge: "Diagnostics",
+    href: "/electronics-repair#appliances",
+  },
+  {
+    id: "websites",
+    icon: Code,
+    title: "Business Websites",
+    tagline: "High-speed modern Next.js systems",
+    badge: "Digital",
+    href: "/website-development",
+  },
+];
+
 export default function HomePage() {
   return (
     <>
       {/* 1. CLEAN EDITORIAL HERO */}
-      <section className="relative bg-[#FFFFFF] pt-8 pb-16 md:pt-12 md:pb-24 border-b border-[#E5E5E5]">
+      <section className="relative bg-[#FFFFFF] pt-8 pb-16 md:pt-12 md:pb-20 border-b border-[#E5E5E5]">
         <Container size="wide">
           <div className="max-w-4xl mx-auto text-center space-y-6">
             <TypewriterHeading
@@ -33,11 +71,12 @@ export default function HomePage() {
             />
 
             <p className="text-lg sm:text-xl text-[#666666] max-w-2xl mx-auto leading-relaxed font-normal">
-              Expert electronics workbench repair and modern business websites engineered in Nagpur.
-              Pure craft, transparent diagnostics, and clean architecture.
+              Expert electronics workbench repair and modern business websites
+              engineered in Nagpur. Pure craft, transparent diagnostics, and
+              clean architecture.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-3">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
               <Button href="#divisions" variant="primary" size="lg">
                 Explore Services
               </Button>
@@ -47,7 +86,7 @@ export default function HomePage() {
             </div>
 
             {/* Quick 3-Pillar Badges */}
-            <div className="pt-10 border-t border-[#E5E5E5] grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs font-bold text-[#000000] uppercase tracking-wider">
+            <div className="pt-8 border-t border-[#E5E5E5] grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs font-bold text-[#000000] uppercase tracking-wider">
               <div className="flex items-center justify-center gap-2.5">
                 <Store className="h-4 w-4 text-[#C6A76B]" />
                 <span>Physical In-Store Workshop</span>
@@ -59,6 +98,64 @@ export default function HomePage() {
               <div className="flex items-center justify-center gap-2.5">
                 <Code className="h-4 w-4 text-[#C6A76B]" />
                 <span>Professional Business Websites</span>
+              </div>
+            </div>
+
+            {/* HERO PRODUCT & SERVICE SHOWCASE CARDS (SECOND PRODUCT LIST CART) */}
+            <div className="pt-10">
+              <div className="text-left mb-4 flex items-center justify-between">
+                <div>
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#C6A76B] block">
+                    Core Product & Service Catalogue
+                  </span>
+                  <span className="font-heading font-extrabold text-base text-[#000000]">
+                    Select Category for Direct Check-In
+                  </span>
+                </div>
+                <Link
+                  href="/electronics-repair"
+                  className="text-xs font-bold text-[#000000] hover:text-[#C6A76B] transition-colors flex items-center gap-1"
+                >
+                  <span>All Services</span>
+                  <ArrowRight className="h-3.5 w-3.5 text-[#C6A76B]" />
+                </Link>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-left">
+                {featuredRepairCards.map((card) => {
+                  const Icon = card.icon;
+                  return (
+                    <Link
+                      key={card.id}
+                      href={card.href}
+                      className="group p-5 rounded-2xl bg-[#FFFFFF] border border-[#E5E5E5] hover:border-[#C6A76B] hover:shadow-lg transition-all flex flex-col justify-between"
+                    >
+                      <div>
+                        <div className="flex items-center justify-between mb-3">
+                          <div className="h-10 w-10 rounded-xl bg-[#000000] text-[#FFFFFF] flex items-center justify-center group-hover:scale-105 transition-transform">
+                            <Icon className="h-5 w-5 text-[#C6A76B]" />
+                          </div>
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-[#F4F4F4] text-[#000000] border border-[#E5E5E5] group-hover:border-[#C6A76B]/50 transition-colors">
+                            {card.badge}
+                          </span>
+                        </div>
+                        <h4 className="font-heading font-extrabold text-sm text-[#000000] group-hover:text-[#C6A76B] transition-colors">
+                          {card.title}
+                        </h4>
+                        <p className="text-xs text-[#666666] mt-1 font-normal leading-relaxed">
+                          {card.tagline}
+                        </p>
+                      </div>
+
+                      <div className="mt-4 pt-3 border-t border-[#F4F4F4] flex items-center justify-between text-xs font-bold text-[#000000]">
+                        <span className="text-[11px] group-hover:underline">
+                          Explore Specs
+                        </span>
+                        <ArrowRight className="h-3.5 w-3.5 text-[#C6A76B] group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </Link>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -79,7 +176,8 @@ export default function HomePage() {
               Two Dedicated Divisions
             </h2>
             <p className="text-sm text-[#666666] mt-2">
-              Hardware bench repair in Nagpur, alongside bespoke web engineering.
+              Hardware bench repair in Nagpur, alongside bespoke web
+              engineering.
             </p>
           </div>
 
@@ -101,18 +199,22 @@ export default function HomePage() {
                   Electronics & Computer Repair
                 </h3>
                 <p className="mt-3 text-sm text-[#666666] leading-relaxed font-normal">
-                  Component-level diagnostics for laptops, desktops, LED televisions, audio systems,
-                  and appliance motherboards.
+                  Component-level diagnostics for laptops, desktops, LED
+                  televisions, audio systems, and appliance motherboards.
                 </p>
 
                 <div className="mt-6 p-4 rounded-xl bg-[#F4F4F4] border border-[#E5E5E5] text-xs text-[#000000]">
-                  <strong>Workshop Notice:</strong> All repairs happen on our workbench in Nagpur.
-                  No doorstep or home visits.
+                  <strong>Workshop Notice:</strong> All repairs happen on our
+                  workbench in Nagpur. No doorstep or home visits.
                 </div>
               </div>
 
               <div className="mt-8 pt-6 border-t border-[#E5E5E5]">
-                <Button href="/electronics-repair" variant="secondary" className="w-full flex items-center justify-center">
+                <Button
+                  href="/electronics-repair"
+                  variant="secondary"
+                  className="w-full flex items-center justify-center"
+                >
                   <span>View Repair Services</span>
                   <ArrowRight className="h-4 w-4 ml-2 text-[#C6A76B]" />
                 </Button>
@@ -136,18 +238,22 @@ export default function HomePage() {
                   Modern Website Development
                 </h3>
                 <p className="mt-3 text-sm text-[#CCCCCC] leading-relaxed font-normal">
-                  Custom Next.js websites built with sub-second speeds, clean design, and local SEO
-                  structure for modern businesses.
+                  Custom Next.js websites built with sub-second speeds, clean
+                  design, and local SEO structure for modern businesses.
                 </p>
 
                 <div className="mt-6 p-4 rounded-xl bg-[#000000] border border-[#333333] text-xs text-[#CCCCCC]">
-                  <strong>Clean Tech Stack:</strong> React, Next.js App Router, Tailwind CSS, and
-                  TanStack Query caching.
+                  <strong>Clean Tech Stack:</strong> React, Next.js App Router,
+                  Tailwind CSS, and TanStack Query caching.
                 </div>
               </div>
 
               <div className="mt-8 pt-6 border-t border-[#333333]">
-                <Button href="/website-development" variant="darkSurfacePrimary" className="w-full flex items-center justify-center">
+                <Button
+                  href="/website-development"
+                  variant="darkSurfacePrimary"
+                  className="w-full flex items-center justify-center"
+                >
                   <span>Explore Web Solutions</span>
                   <ArrowRight className="h-4 w-4 ml-2 text-[#C6A76B]" />
                 </Button>
@@ -169,15 +275,17 @@ export default function HomePage() {
                 Ready to talk? Reach out today.
               </h3>
               <p className="text-xs sm:text-sm text-[#CCCCCC] max-w-lg">
-                Mon–Sat 10:00 AM – 8:30 PM at our Nagpur workshop, or send an inquiry online.
+                Mon–Sat 10:00 AM – 8:30 PM at our Nagpur workshop, or send an
+                inquiry online.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-              <Button href="/contact?type=repair" variant="darkSurfacePrimary" size="md">
+              <Button
+                href="/contact?type=repair"
+                variant="darkSurfacePrimary"
+                size="md"
+              >
                 Workshop Location
-              </Button>
-              <Button href="/contact?type=digital" variant="darkSurfaceSecondary" size="md">
-                Get a Quote
               </Button>
             </div>
           </div>

@@ -1,7 +1,14 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { MapPin, Clock, Phone, Mail, ShieldAlert, ExternalLink } from "lucide-react";
+import {
+  MapPin,
+  Clock,
+  Phone,
+  Mail,
+  ShieldAlert,
+  ExternalLink,
+} from "lucide-react";
 import { Container } from "@/components/shared/container";
 import { siteConfig } from "@/config/site";
 import { navigationConfig } from "@/config/navigation";
@@ -21,8 +28,11 @@ export function Footer() {
                 Physical Workshop Service Policy
               </h3>
               <p className="text-sm text-[#CCCCCC] mt-1.5 max-w-2xl leading-relaxed">
-                All computer, laptop, television, audio, and electronics repairs are performed
-                in-house at our workshop bench in Nagpur. <strong className="text-[#FFFFFF]">We do not provide doorstep visits, pickups, or deliveries.</strong>
+                All computer, laptop, television, audio, and electronics repairs
+                are performed in-house at our workshop bench in Nagpur.{" "}
+                <strong className="text-[#FFFFFF]">
+                  We do not provide doorstep visits, pickups, or deliveries.
+                </strong>
               </p>
             </div>
           </div>
@@ -53,8 +63,8 @@ export function Footer() {
               </div>
             </Link>
             <p className="text-sm text-[#CCCCCC] max-w-sm leading-relaxed font-normal">
-              Engineering reliable component-level repairs alongside clean, modern digital systems
-              and custom web solutions.
+              Engineering reliable component-level repairs alongside clean,
+              modern digital systems and custom web solutions.
             </p>
             <div className="space-y-2.5 pt-2 text-xs text-[#CCCCCC]">
               <div className="flex items-start space-x-3">
@@ -143,14 +153,14 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#CCCCCC] gap-4">
-          <p>© 2026 Shukla Electronic & Computer Services. All rights reserved.</p>
+          <p>
+            © 2026 Shukla Electronic & Computer Services. All rights reserved.
+          </p>
           <div className="flex items-center space-x-6">
             <span className="inline-flex items-center gap-2 font-medium text-[#FFFFFF]">
               <span className="h-2 w-2 rounded-full bg-[#C6A76B]"></span>
               Nagpur Workshop Active
             </span>
-            <span>•</span>
-            <span className="text-[#C6A76B] font-semibold">Black, White & Champagne Gold</span>
           </div>
         </div>
       </Container>

@@ -28,7 +28,7 @@ export function SectionWrapper({
   return (
     <section
       className={cn(
-        !noPadding && "py-20 md:py-28",
+        !noPadding && "py-10 md:py-14",
         variantStyles[variant],
         className
       )}

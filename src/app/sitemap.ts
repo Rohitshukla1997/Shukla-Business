@@ -6,6 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/about",
     "/electronics-repair",
+    "/second-hand-deals",
     "/website-development",
     "/contact",
   ];

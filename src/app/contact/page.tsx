@@ -15,9 +15,9 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <section className="pt-20 pb-16 bg-[#FFFFFF] border-b border-[#E5E5E5]">
+      <section className="pt-8 pb-12 md:pt-10 md:pb-14 bg-[#FFFFFF] border-b border-[#E5E5E5]">
         <Container size="wide">
-          <div className="max-w-3xl space-y-5">
+          <div className="max-w-3xl space-y-4">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F4F4F4] border border-[#C6A76B]/40 text-[#C6A76B] text-xs font-bold uppercase tracking-wider">
               Nagpur Workshop & Digital Lab
             </span>
@@ -26,8 +26,9 @@ export default function ContactPage() {
               className="text-4xl sm:text-6xl text-left"
             />
             <p className="text-lg text-[#666666] leading-relaxed font-normal">
-              Have a device that needs precision diagnostics, or want to discuss a custom digital
-              solution? Reach out directly or visit our workshop counter in Nagpur.
+              Have a device that needs precision diagnostics, or want to discuss
+              a custom digital solution? Reach out directly or visit our
+              workshop counter in Nagpur.
             </p>
           </div>
         </Container>
@@ -38,15 +39,16 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 items-start">
             {/* Left Column: Contact Form */}
             <div className="lg:col-span-7">
-              <div className="mb-8">
+              <div className="mb-6">
                 <span className="text-xs font-bold uppercase tracking-wider text-[#C6A76B]">
                   Inquiry Portal
                 </span>
-                <h2 className="text-3xl font-extrabold font-heading text-[#000000] mt-1.5">
+                <h2 className="text-3xl font-extrabold font-heading text-[#000000] mt-1">
                   Send Your Inquiry
                 </h2>
                 <p className="text-sm text-[#666666] mt-1 font-normal">
-                  Select your requirement below. We respond within a few business hours.
+                  Select your requirement below. We respond within a few
+                  business hours.
                 </p>
               </div>
 
@@ -67,8 +69,12 @@ export default function ContactPage() {
                   <div className="flex items-start gap-4">
                     <MapPin className="h-5 w-5 text-[#C6A76B] shrink-0 mt-0.5" />
                     <div>
-                      <strong className="block text-[#000000] text-base font-bold">Physical Store Address</strong>
-                      <span className="text-[#666666] leading-relaxed block mt-0.5">{siteConfig.contact.address}</span>
+                      <strong className="block text-[#000000] text-base font-bold">
+                        Physical Store Address
+                      </strong>
+                      <span className="text-[#666666] leading-relaxed block mt-0.5">
+                        {siteConfig.contact.address}
+                      </span>
                       <a
                         href={siteConfig.contact.googleMapsUrl}
                         target="_blank"
@@ -84,24 +90,36 @@ export default function ContactPage() {
                   <div className="flex items-start gap-4">
                     <Clock className="h-5 w-5 text-[#C6A76B] shrink-0 mt-0.5" />
                     <div>
-                      <strong className="block text-[#000000] text-base font-bold">Store Working Hours</strong>
-                      <span className="text-[#666666] block mt-0.5">{siteConfig.contact.workingHours}</span>
+                      <strong className="block text-[#000000] text-base font-bold">
+                        Store Working Hours
+                      </strong>
+                      <span className="text-[#666666] block mt-0.5">
+                        {siteConfig.contact.workingHours}
+                      </span>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-4">
                     <Phone className="h-5 w-5 text-[#C6A76B] shrink-0 mt-0.5" />
                     <div>
-                      <strong className="block text-[#000000] text-base font-bold">Direct Phone</strong>
-                      <span className="text-[#666666] block mt-0.5">{siteConfig.contact.phone}</span>
+                      <strong className="block text-[#000000] text-base font-bold">
+                        Direct Phone
+                      </strong>
+                      <span className="text-[#666666] block mt-0.5">
+                        {siteConfig.contact.phone}
+                      </span>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-4">
                     <Mail className="h-5 w-5 text-[#C6A76B] shrink-0 mt-0.5" />
                     <div>
-                      <strong className="block text-[#000000] text-base font-bold">Email</strong>
-                      <span className="text-[#666666] block mt-0.5">{siteConfig.contact.email}</span>
+                      <strong className="block text-[#000000] text-base font-bold">
+                        Email
+                      </strong>
+                      <span className="text-[#666666] block mt-0.5">
+                        {siteConfig.contact.email}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -113,8 +131,9 @@ export default function ContactPage() {
                     In-Store Drop-off Policy
                   </span>
                   <p className="font-normal text-[#666666] leading-relaxed">
-                    For all electronic appliances, computers, and TV repairs, customers must visit
-                    our physical store in Nagpur. We do not provide home visits or doorstep collection.
+                    For all electronic appliances, computers, and TV repairs,
+                    customers must visit our physical store in Nagpur. We do not
+                    provide home visits or doorstep collection.
                   </p>
                 </div>
               </div>
@@ -151,7 +170,9 @@ export default function ContactPage() {
                   />
                 </div>
                 <div className="p-5 text-xs text-[#666666] bg-[#FFFFFF] font-medium border-t border-[#E5E5E5] leading-relaxed">
-                  <strong className="text-[#000000]">Landmark:</strong> Near Hanuman Mandir, Nagpur. Easily accessible by local transport with street parking available outside.
+                  <strong className="text-[#000000]">Landmark:</strong> Near KMG
+                  Hospital Tukdoji Complex, Nagpur. Easily accessible by local
+                  transport with street parking available outside.
                 </div>
               </div>
             </div>

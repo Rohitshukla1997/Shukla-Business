@@ -9,7 +9,7 @@ export const siteConfig = {
     email: "sanjayshukla1967@gmail.com",
     phone: "+91 98765 43210",
     address:
-      "Shukla Electronic & Computer Services, Near Hanuman Mandir, Nagpur, Maharashtra 440024, India",
+      "Shukla Electronic & Computer Services, Near KMG Hospital Tukdoji Complex, Nagpur, Maharashtra 440024, India",
     workingHours: "Tuesday – Sunday: 10:30 AM – 9:00 PM (Monday Closed)",
     coordinates: {
       latitude: 21.1196276,

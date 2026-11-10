@@ -16,6 +16,7 @@ export const navigationConfig: {
     { title: "Home", href: "/" },
     { title: "About", href: "/about" },
     { title: "Electronics Repair", href: "/electronics-repair" },
+    { title: "Second-Hand Deals", href: "/second-hand-deals", badge: "Deals" },
     { title: "Website Development", href: "/website-development" },
     { title: "Contact", href: "/contact" },
   ],

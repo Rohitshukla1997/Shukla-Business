@@ -15,9 +15,9 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <section className="pt-20 pb-16 bg-[#FFFFFF] border-b border-[#E5E5E5]">
+      <section className="pt-8 pb-12 md:pt-10 md:pb-14 bg-[#FFFFFF] border-b border-[#E5E5E5]">
         <Container size="wide">
-          <div className="max-w-3xl space-y-5">
+          <div className="max-w-3xl space-y-4">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F4F4F4] border border-[#C6A76B]/40 text-[#C6A76B] text-xs font-bold uppercase tracking-wider">
               Our Story & Philosophy
             </span>
@@ -52,8 +52,8 @@ export default function AboutPage() {
                 both worlds together. Our hardware technicians use oscilloscopes
                 and high-grade soldering rigs on physical workbenches to revive
                 expensive electronics. Simultaneously, our software team builds
-                high-speed Next.js websites and tailor-made management
-                applications that empower small and growing enterprises.
+                websites and tailor-made management applications that empower
+                small and growing enterprises.
               </p>
               <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div className="p-6 rounded-2xl bg-[#FFFFFF] border border-[#E5E5E5] hover:border-[#C6A76B] transition-all shadow-sm">
@@ -72,8 +72,8 @@ export default function AboutPage() {
                     Online Digital Lab
                   </h4>
                   <p className="text-xs text-[#666666] mt-2 leading-relaxed">
-                    Full-stack Next.js web applications, custom CRM/ERP engines,
-                    and cloud setups.
+                    Full-stack web applications, custom website design and cloud
+                    setups.
                   </p>
                 </div>
               </div>
