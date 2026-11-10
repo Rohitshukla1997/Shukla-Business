@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+:root {
+  /* Primary Colors */
+  --background: #FFFFFF;
+  --foreground: #000000;
+
+  /* Surface Colors */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F4F4F4;
+  --bg-dark: #000000;
+  --bg-dark-soft: #171717;
+
+  /* Brand Accent - Champagne Gold */
+  --accent-primary: #C6A76B;
+  --accent-hover: #AE8D50;
+  --accent-soft: #E5E5E5;
+
+  /* Typography */
+  --text-primary: #000000;
+  --text-secondary: #666666;
+  --text-inverse: #FFFFFF;
+
+  /* Cards and Borders */
+  --card-bg: #FFFFFF;
+  --card-dark: #171717;
+  --border-subtle: #E5E5E5;
+  --border-accent: #C6A76B;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-dark: var(--bg-dark);
+  --color-bg-dark-soft: var(--bg-dark-soft);
+
+  --color-accent-primary: var(--accent-primary);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-inverse: var(--text-inverse);
+
+  --color-card-bg: var(--card-bg);
+  --color-card-dark: var(--card-dark);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-accent: var(--border-accent);
+
+  --font-heading: var(--font-space-grotesk), sans-serif;
+  --font-body: var(--font-inter), sans-serif;
+  --font-accent: var(--font-manrope), sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+}
+
+/* Accessible focus ring */
+:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+/* Reduced Motion Safety */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
