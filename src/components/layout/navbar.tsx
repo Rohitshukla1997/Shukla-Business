@@ -72,59 +72,73 @@ export function Navbar() {
           <div className="lg:hidden flex items-center">
             <button
               type="button"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 rounded-xl text-[#000000] border border-[#E5E5E5] hover:border-[#C6A76B] hover:bg-[#F4F4F4] focus:outline-none focus:ring-2 focus:ring-[#C6A76B]"
+              onClick={() => setMobileMenuOpen((prev) => !prev)}
+              className="relative z-50 p-2.5 rounded-xl text-[#000000] border border-[#E5E5E5] bg-[#FFFFFF] hover:border-[#C6A76B] hover:bg-[#F4F4F4] active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-[#C6A76B] cursor-pointer touch-manipulation select-none"
               aria-label="Toggle navigation menu"
+              aria-expanded={mobileMenuOpen}
             >
-              {mobileMenuOpen ? <X className="h-6 w-6 text-[#000000]" /> : <Menu className="h-6 w-6 text-[#000000]" />}
+              {mobileMenuOpen ? (
+                <X className="h-6 w-6 text-[#000000]" />
+              ) : (
+                <Menu className="h-6 w-6 text-[#000000]" />
+              )}
             </button>
           </div>
         </div>
       </Container>
 
-      {/* Mobile Menu Flyout */}
+      {/* Mobile Menu Backdrop & Flyout Panel */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-b border-[#E5E5E5] bg-[#FFFFFF] px-4 pt-3 pb-7 shadow-lg">
-          <div className="space-y-1.5">
-            {navigationConfig.mainNav.map((item) => {
-              const isActive = pathname === item.href;
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  prefetch={true}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={cn(
-                    "flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold transition-all",
-                    isActive
-                      ? "bg-[#000000] text-[#FFFFFF]"
-                      : "text-[#000000] hover:bg-[#F4F4F4]"
-                  )}
-                >
-                  <span>{item.title}</span>
-                  {isActive && <span className="h-2 w-2 rounded-full bg-[#C6A76B]"></span>}
-                </Link>
-              );
-            })}
-          </div>
+        <>
+          <div
+            className="fixed inset-0 top-20 bg-black/40 backdrop-blur-xs z-40 lg:hidden"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-hidden="true"
+          />
+          <div className="fixed inset-x-0 top-20 z-50 lg:hidden border-b border-[#E5E5E5] bg-[#FFFFFF] px-4 pt-3 pb-7 shadow-2xl overflow-y-auto max-h-[calc(100vh-5rem)]">
+            <div className="space-y-1.5">
+              {navigationConfig.mainNav.map((item) => {
+                const isActive = pathname === item.href;
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    prefetch={true}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={cn(
+                      "flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold transition-all touch-manipulation",
+                      isActive
+                        ? "bg-[#000000] text-[#FFFFFF]"
+                        : "text-[#000000] hover:bg-[#F4F4F4] active:bg-[#E5E5E5]"
+                    )}
+                  >
+                    <span>{item.title}</span>
+                    {isActive && (
+                      <span className="h-2 w-2 rounded-full bg-[#C6A76B]" />
+                    )}
+                  </Link>
+                );
+              })}
+            </div>
 
-          <div className="mt-6 pt-4 border-t border-[#E5E5E5] space-y-3">
-            <div className="text-xs text-[#666666] px-2 font-medium">
-              Workshop: {siteConfig.contact.workingHours}
-            </div>
-            <div>
-              <Button
-                href="/contact?type=repair"
-                variant="primary"
-                size="sm"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full text-center"
-              >
-                Shop Check-In
-              </Button>
+            <div className="mt-6 pt-4 border-t border-[#E5E5E5] space-y-3">
+              <div className="text-xs text-[#666666] px-2 font-medium">
+                Workshop: {siteConfig.contact.workingHours}
+              </div>
+              <div>
+                <Button
+                  href="/contact?type=repair"
+                  variant="primary"
+                  size="sm"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="w-full text-center"
+                >
+                  Shop Check-In
+                </Button>
+              </div>
             </div>
           </div>
-        </div>
+        </>
       )}
     </header>
   );

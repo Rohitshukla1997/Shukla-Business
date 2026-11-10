@@ -48,13 +48,18 @@ export function TVDisassemblySection() {
     if (prefersReducedMotion) return;
 
     const ctx = gsap.context(() => {
+      const isMobile = window.innerWidth < 768;
+      const zFactor = isMobile ? 0.42 : 1;
+      const xFactor = isMobile ? 0.45 : 1;
+      const yFactor = isMobile ? 0.45 : 1;
+
       // Smooth timeline scrub
       const masterTl = gsap.timeline({
         scrollTrigger: {
           trigger: pinSectionRef.current,
           start: "top top",
-          end: "+=2600",
-          scrub: 1,
+          end: isMobile ? "+=1800" : "+=2600",
+          scrub: isMobile ? 0.6 : 1,
           pin: true,
           anticipatePin: 1,
           onUpdate: (self) => {
@@ -76,7 +81,7 @@ export function TVDisassemblySection() {
       });
 
       gsap.set(stageRef.current, {
-        perspective: 1800,
+        perspective: isMobile ? 1200 : 1800,
         transformStyle: "preserve-3d",
       });
 
@@ -86,10 +91,10 @@ export function TVDisassemblySection() {
       masterTl.to(
         stageRef.current,
         {
-          rotationY: -16,
-          rotationX: 8,
+          rotationY: isMobile ? -10 : -16,
+          rotationX: isMobile ? 5 : 8,
           rotationZ: -1,
-          scale: 0.94,
+          scale: isMobile ? 0.98 : 0.94,
           ease: "none",
         },
         0
@@ -99,9 +104,9 @@ export function TVDisassemblySection() {
       masterTl.to(
         frontGlassRef.current,
         {
-          z: 320,
-          x: -60,
-          y: -20,
+          z: 320 * zFactor,
+          x: -60 * xFactor,
+          y: -20 * yFactor,
           opacity: 0.88,
           ease: "none",
         },
@@ -113,7 +118,7 @@ export function TVDisassemblySection() {
         frontTvRef.current,
         {
           opacity: 0,
-          z: 180,
+          z: 180 * zFactor,
           ease: "none",
         },
         0.08
@@ -125,9 +130,9 @@ export function TVDisassemblySection() {
       masterTl.to(
         diffuserStackRef.current,
         {
-          z: 160,
-          x: -30,
-          y: -10,
+          z: 160 * zFactor,
+          x: -30 * xFactor,
+          y: -10 * yFactor,
           opacity: 0.95,
           ease: "none",
         },
@@ -137,8 +142,8 @@ export function TVDisassemblySection() {
       masterTl.to(
         ledBacklightRef.current,
         {
-          z: 70,
-          x: -10,
+          z: 70 * zFactor,
+          x: -10 * xFactor,
           opacity: 1,
           ease: "none",
         },
@@ -148,9 +153,9 @@ export function TVDisassemblySection() {
       masterTl.to(
         rearCoverRef.current,
         {
-          z: -420,
-          x: 90,
-          y: 40,
+          z: -420 * zFactor,
+          x: 90 * xFactor,
+          y: 40 * yFactor,
           opacity: 0.92,
           ease: "none",
         },
@@ -163,7 +168,7 @@ export function TVDisassemblySection() {
       masterTl.to(
         chassisRef.current,
         {
-          z: -80,
+          z: -80 * zFactor,
           opacity: 1,
           ease: "none",
         },
@@ -174,11 +179,11 @@ export function TVDisassemblySection() {
       masterTl.to(
         psuBoardRef.current,
         {
-          z: -180,
-          x: -120,
-          y: -30,
-          rotationY: -12,
-          rotationX: 8,
+          z: -180 * zFactor,
+          x: -120 * xFactor,
+          y: -30 * yFactor,
+          rotationY: isMobile ? -6 : -12,
+          rotationX: isMobile ? 4 : 8,
           boxShadow: "0 20px 40px rgba(0,0,0,0.4)",
           ease: "none",
         },
@@ -189,11 +194,11 @@ export function TVDisassemblySection() {
       masterTl.to(
         mainboardRef.current,
         {
-          z: -210,
-          x: 130,
-          y: -20,
-          rotationY: 15,
-          rotationX: 6,
+          z: -210 * zFactor,
+          x: 130 * xFactor,
+          y: -20 * yFactor,
+          rotationY: isMobile ? 8 : 15,
+          rotationX: isMobile ? 3 : 6,
           boxShadow: "0 20px 40px rgba(0,0,0,0.4)",
           ease: "none",
         },
@@ -204,9 +209,9 @@ export function TVDisassemblySection() {
       masterTl.to(
         tconBoardRef.current,
         {
-          z: -130,
-          y: 110,
-          rotationX: -18,
+          z: -130 * zFactor,
+          y: 110 * yFactor,
+          rotationX: isMobile ? -10 : -18,
           ease: "none",
         },
         0.6
@@ -217,7 +222,7 @@ export function TVDisassemblySection() {
         cablesGroupRef.current,
         {
           opacity: 0.9,
-          z: -120,
+          z: -120 * zFactor,
           ease: "none",
         },
         0.58
@@ -227,10 +232,10 @@ export function TVDisassemblySection() {
       masterTl.to(
         speakerLeftRef.current,
         {
-          z: -160,
-          x: -150,
-          y: 90,
-          rotationZ: -8,
+          z: -160 * zFactor,
+          x: -150 * xFactor,
+          y: 90 * yFactor,
+          rotationZ: isMobile ? -4 : -8,
           ease: "none",
         },
         0.65
@@ -239,10 +244,10 @@ export function TVDisassemblySection() {
       masterTl.to(
         speakerRightRef.current,
         {
-          z: -160,
-          x: 150,
-          y: 90,
-          rotationZ: 8,
+          z: -160 * zFactor,
+          x: 150 * xFactor,
+          y: 90 * yFactor,
+          rotationZ: isMobile ? 4 : 8,
           ease: "none",
         },
         0.65
@@ -254,10 +259,10 @@ export function TVDisassemblySection() {
       masterTl.to(
         stageRef.current,
         {
-          rotationY: -22,
-          rotationX: 12,
-          rotationZ: -2,
-          scale: 0.9,
+          rotationY: isMobile ? -14 : -22,
+          rotationX: isMobile ? 8 : 12,
+          rotationZ: -1.5,
+          scale: isMobile ? 0.96 : 0.9,
           ease: "none",
         },
         0.85
@@ -321,10 +326,10 @@ export function TVDisassemblySection() {
         </div>
 
         {/* 3D ANIMATION STAGE CANVAS */}
-        <div className="relative w-full flex-1 flex items-center justify-center overflow-visible">
+        <div className="relative w-full flex-1 flex items-center justify-center overflow-visible px-4">
           <div
             ref={stageRef}
-            className="relative w-[340px] sm:w-[540px] md:w-[680px] lg:w-[820px] aspect-[16/9.5] transition-transform"
+            className="relative w-[300px] xs:w-[330px] sm:w-[520px] md:w-[680px] lg:w-[820px] aspect-[16/9.5] transition-transform"
             style={{ transformStyle: "preserve-3d" }}
           >
             {/* LAYER 1: ASSEMBLED FRONT VIEW */}
@@ -536,10 +541,10 @@ export function TVDisassemblySection() {
             <div
               ref={speakerLeftRef}
               onClick={() => setActiveComponent(TV_COMPONENTS_DATA[7])}
-              className="absolute bottom-[-10%] left-[8%] w-[18%] h-[12%] z-16 rounded-lg bg-[#171717] border border-[#333333] cursor-pointer hover:border-[#C6A76B] shadow-lg flex items-center justify-center p-2 text-center"
+              className="absolute bottom-[-14%] sm:bottom-[-10%] left-[6%] sm:left-[8%] w-[24%] sm:w-[18%] h-[14%] sm:h-[12%] z-16 rounded-lg bg-[#171717] border border-[#333333] cursor-pointer hover:border-[#C6A76B] shadow-lg flex items-center justify-center p-1.5 sm:p-2 text-center"
             >
-              <div className="flex items-center gap-1.5 text-[#FFFFFF] text-[10px] font-mono">
-                <Volume2 className="h-3.5 w-3.5 text-[#C6A76B]" />
+              <div className="flex items-center gap-1 sm:gap-1.5 text-[#FFFFFF] text-[9px] sm:text-[10px] font-mono">
+                <Volume2 className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#C6A76B]" />
                 <span>Speakers</span>
               </div>
             </div>
@@ -547,10 +552,10 @@ export function TVDisassemblySection() {
             <div
               ref={speakerRightRef}
               onClick={() => setActiveComponent(TV_COMPONENTS_DATA[7])}
-              className="absolute bottom-[-10%] right-[8%] w-[18%] h-[12%] z-16 rounded-lg bg-[#171717] border border-[#333333] cursor-pointer hover:border-[#C6A76B] shadow-lg flex items-center justify-center p-2 text-center"
+              className="absolute bottom-[-14%] sm:bottom-[-10%] right-[6%] sm:right-[8%] w-[24%] sm:w-[18%] h-[14%] sm:h-[12%] z-16 rounded-lg bg-[#171717] border border-[#333333] cursor-pointer hover:border-[#C6A76B] shadow-lg flex items-center justify-center p-1.5 sm:p-2 text-center"
             >
-              <div className="flex items-center gap-1.5 text-[#FFFFFF] text-[10px] font-mono">
-                <Volume2 className="h-3.5 w-3.5 text-[#C6A76B]" />
+              <div className="flex items-center gap-1 sm:gap-1.5 text-[#FFFFFF] text-[9px] sm:text-[10px] font-mono">
+                <Volume2 className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#C6A76B]" />
                 <span>Speakers</span>
               </div>
             </div>
@@ -596,40 +601,40 @@ export function TVDisassemblySection() {
           </div>
         </div>
 
-        {/* Clean Component Details Modal */}
+        {/* Clean Component Details Modal / Bottom Sheet */}
         {activeComponent && (
-          <div className="absolute bottom-6 right-6 z-50 max-w-sm w-full bg-[#FFFFFF] border border-[#C6A76B] rounded-2xl p-5 shadow-2xl animate-in fade-in duration-150">
-            <div className="flex items-start justify-between gap-4 pb-3 border-b border-[#E5E5E5]">
+          <div className="fixed inset-x-4 bottom-4 sm:inset-x-auto sm:right-6 sm:bottom-6 z-50 max-w-sm sm:w-full mx-auto sm:mx-0 bg-[#FFFFFF] border border-[#C6A76B] rounded-2xl p-4 sm:p-5 shadow-[0_20px_50px_rgba(0,0,0,0.25)] animate-in fade-in slide-in-from-bottom-3 duration-200">
+            <div className="flex items-start justify-between gap-4 pb-2.5 sm:pb-3 border-b border-[#E5E5E5]">
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-wider text-[#C6A76B] block">
                   Hardware Component
                 </span>
-                <h4 className="font-heading font-extrabold text-lg text-[#000000] mt-0.5">
+                <h4 className="font-heading font-extrabold text-base sm:text-lg text-[#000000] mt-0.5">
                   {activeComponent.name}
                 </h4>
               </div>
               <button
                 type="button"
                 onClick={() => setActiveComponent(null)}
-                className="p-1 rounded-md text-[#666666] hover:text-[#000000] hover:bg-[#F4F4F4]"
-                aria-label="Close"
+                className="p-1.5 rounded-lg text-[#666666] hover:text-[#000000] hover:bg-[#F4F4F4] active:scale-95 transition-all touch-manipulation"
+                aria-label="Close component details"
               >
                 <Minimize2 className="h-4 w-4" />
               </button>
             </div>
 
-            <p className="text-xs text-[#666666] py-3 leading-relaxed">
+            <p className="text-xs text-[#666666] py-2.5 sm:py-3 leading-relaxed">
               {activeComponent.description}
             </p>
 
             <div className="pt-2 border-t border-[#E5E5E5] flex items-center justify-between">
-              <span className="text-[11px] font-medium text-[#000000]">
+              <span className="text-[10px] sm:text-[11px] font-semibold text-[#000000] bg-[#F4F4F4] border border-[#E5E5E5] px-2.5 py-1 rounded-md">
                 {activeComponent.keyMetric}
               </span>
               <button
                 type="button"
                 onClick={() => setActiveComponent(null)}
-                className="px-3 py-1 bg-[#000000] text-[#FFFFFF] text-xs font-semibold rounded-lg"
+                className="px-3.5 py-1.5 bg-[#000000] hover:bg-[#171717] active:scale-95 text-[#FFFFFF] text-xs font-semibold rounded-lg transition-all touch-manipulation cursor-pointer"
               >
                 Close
               </button>

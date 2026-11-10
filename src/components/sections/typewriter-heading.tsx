@@ -18,27 +18,25 @@ export function TypewriterHeading({
   className,
   as: Tag = "h1",
   typeSpeed = 55,
-  deleteSpeed = 60,
-  delayBeforeDelete = 2500,
+  deleteSpeed = 45,
+  delayBeforeDelete = 2200,
 }: TypewriterHeadingProps) {
   const sentences = Array.isArray(text) ? text : [text];
+  const [mounted, setMounted] = useState(false);
   const [sentenceIndex, setSentenceIndex] = useState(0);
   const [currentText, setCurrentText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const fullSentence = sentences[sentenceIndex] || "";
 
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
+    if (!mounted) return;
 
-    if (prefersReducedMotion) {
-      setCurrentText(fullSentence);
-      return;
-    }
-
-    let timer: NodeJS.Timeout;
+    let timer: ReturnType<typeof setTimeout>;
 
     if (!isDeleting) {
       // Typing phase
@@ -67,6 +65,7 @@ export function TypewriterHeading({
 
     return () => clearTimeout(timer);
   }, [
+    mounted,
     currentText,
     isDeleting,
     sentenceIndex,
@@ -77,9 +76,10 @@ export function TypewriterHeading({
     delayBeforeDelete,
   ]);
 
-  // Ensure there is always a full stop at the end
-  const hasDot = currentText.endsWith(".");
-  const displayText = hasDot ? currentText.slice(0, -1) : currentText;
+  // Before hydration, render the first sentence so SSR HTML is not empty
+  const activeString = mounted ? currentText : (sentences[0] || "");
+  const hasDot = activeString.endsWith(".");
+  const displayText = hasDot ? activeString.slice(0, -1) : activeString;
 
   return (
     <Tag
