@@ -13,6 +13,8 @@ import { cn } from "@/lib/utils";
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [inquiryId, setInquiryId] = useState<string | null>(null);
+  const [submissionError, setSubmissionError] = useState<string | null>(null);
 
   const {
     register,
@@ -32,9 +34,42 @@ export function ContactForm() {
 
   const selectedDivision = watch("division");
 
-  const onSubmit = async () => {
-    await new Promise((res) => setTimeout(res, 800));
-    setSubmitted(true);
+  const onSubmit = async (data: ContactFormData) => {
+    try {
+      setSubmissionError(null);
+      const res = await fetch("/api/v1/inquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          customerName: data.fullName,
+          phoneNumber: data.phone,
+          emailAddress: data.email,
+          category:
+            data.division === "electronics-repair"
+              ? "Electronics Repair"
+              : "Digital Solutions",
+          service: data.serviceCategory,
+          subject: `${data.division === "electronics-repair" ? "Hardware Service" : "Web Project"} - ${data.serviceCategory}`,
+          message: data.notes,
+          source: "Contact Form",
+        }),
+      });
+
+      const json = await res.json();
+      if (!res.ok || !json.success) {
+        throw new Error(json.error || "Failed to submit inquiry");
+      }
+
+      setInquiryId(json.inquiryId || null);
+      setSubmitted(true);
+    } catch (err: unknown) {
+      console.error(err);
+      setSubmissionError(
+        err instanceof Error
+          ? err.message
+          : "An error occurred while submitting. Please try calling directly."
+      );
+    }
   };
 
   if (submitted) {
@@ -43,12 +78,19 @@ export function ContactForm() {
         <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#F4F4F4] border border-[#C6A76B] text-[#C6A76B]">
           <CheckCircle2 className="h-9 w-9 text-[#C6A76B]" />
         </div>
-        <h3 className="text-3xl font-extrabold font-heading text-[#000000]">
-          Inquiry Successfully Received
-        </h3>
+        <div className="space-y-2">
+          <h3 className="text-3xl font-extrabold font-heading text-[#000000]">
+            Inquiry Successfully Received
+          </h3>
+          {inquiryId && (
+            <div className="inline-block px-4 py-1.5 rounded-full bg-[#000000] text-[#C6A76B] text-xs font-mono font-bold tracking-wide">
+              Reference ID: {inquiryId}
+            </div>
+          )}
+        </div>
         <p className="text-base text-[#666666] max-w-md mx-auto leading-relaxed font-normal">
-          Thank you for reaching out. A technician or software engineer will
-          review your details promptly.
+          Your inquiry has been stored in our Google Sheets system and our
+          Nagpur team has been notified via Gmail.
         </p>
 
         {selectedDivision === "electronics-repair" ? (
@@ -335,6 +377,13 @@ export function ContactForm() {
         )}
       </div>
 
+      {submissionError && (
+        <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-start gap-2.5">
+          <AlertCircle className="h-4 w-4 shrink-0 mt-0.5" />
+          <span>{submissionError}</span>
+        </div>
+      )}
+
       <Button
         type="submit"
         variant="primary"
@@ -342,7 +391,7 @@ export function ContactForm() {
         disabled={isSubmitting}
         className="w-full"
       >
-        {isSubmitting ? "Submitting Inquiry..." : "Submit Inquiry"}
+        {isSubmitting ? "Submitting to Workshop Queue..." : "Submit Inquiry"}
       </Button>
     </form>
   );

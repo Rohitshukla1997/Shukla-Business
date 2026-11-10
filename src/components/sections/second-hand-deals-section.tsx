@@ -26,7 +26,9 @@ export function SecondHandDealsSection({
   const [dealType, setDealType] = useState<"buy" | "sell">("buy");
   const [category, setCategory] = useState<string>("tv");
   const [submitted, setSubmitted] = useState(false);
+  const [inquiryId, setInquiryId] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   // Form inputs state
   const [formData, setFormData] = useState({
@@ -43,15 +45,47 @@ export function SecondHandDealsSection({
     { id: "appliances", label: "Electronic Appliances", icon: Cpu },
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.phone) return;
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
+    setSubmitError(null);
+
+    try {
+      const selectedCategoryObj = categories.find((c) => c.id === category);
+      const res = await fetch("/api/v1/inquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          customerName: formData.name,
+          phoneNumber: formData.phone,
+          emailAddress: formData.email,
+          category: `Certified Pre-Owned (${dealType.toUpperCase()})`,
+          service: selectedCategoryObj?.label || category,
+          subject: `${dealType === "sell" ? "Valuation / Sell Request" : "Purchase Inquiry"} - ${selectedCategoryObj?.label || category}`,
+          message: formData.deviceDetails,
+          source: "Pre-Owned Deals Portal",
+        }),
+      });
+
+      const json = await res.json();
+      if (!res.ok || !json.success) {
+        throw new Error(json.error || "Failed to submit inquiry");
+      }
+
+      setInquiryId(json.inquiryId || null);
       setSubmitted(true);
-    }, 600);
+    } catch (err: unknown) {
+      console.error(err);
+      setSubmitError(
+        err instanceof Error
+          ? err.message
+          : "An error occurred while submitting."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -143,11 +177,15 @@ export function SecondHandDealsSection({
                 <h3 className="text-2xl font-extrabold font-heading text-[#000000]">
                   Inquiry Received
                 </h3>
+                {inquiryId && (
+                  <div className="inline-block px-3 py-1 rounded-full bg-[#000000] text-[#C6A76B] text-[11px] font-mono font-bold tracking-wide">
+                    Reference ID: {inquiryId}
+                  </div>
+                )}
                 <p className="text-xs sm:text-sm text-[#666666] max-w-sm mx-auto leading-relaxed">
-                  Thank you, <strong>{formData.name}</strong>. Our team will
-                  review your {category.toUpperCase()}{" "}
-                  {dealType === "sell" ? "sale appraisal" : "purchase inquiry"}{" "}
-                  and call you at <strong>{formData.phone}</strong> shortly.
+                  Thank you, <strong>{formData.name}</strong>. Your inquiry has been
+                  saved to Google Sheets and our team has been notified via Gmail.
+                  We will call you at <strong>{formData.phone}</strong> shortly.
                 </p>
                 <div className="pt-2">
                   <Button
@@ -315,6 +353,12 @@ export function SecondHandDealsSection({
                     className="w-full px-3.5 py-2 text-xs rounded-xl border border-[#E5E5E5] bg-[#FFFFFF] text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#C6A76B]"
                   />
                 </div>
+
+                {submitError && (
+                  <p className="text-xs text-red-600 bg-red-50 p-2.5 rounded-lg border border-red-200">
+                    {submitError}
+                  </p>
+                )}
 
                 <Button
                   type="submit"
