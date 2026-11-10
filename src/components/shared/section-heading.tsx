@@ -1,5 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils";
+import { TypewriterHeading } from "@/components/sections/typewriter-heading";
 
 interface SectionHeadingProps {
   badge?: string;
@@ -9,6 +10,7 @@ interface SectionHeadingProps {
   align?: "left" | "center";
   theme?: "light" | "dark";
   className?: string;
+  enableTypewriter?: boolean;
 }
 
 export function SectionHeading({
@@ -19,6 +21,7 @@ export function SectionHeading({
   align = "left",
   theme = "light",
   className,
+  enableTypewriter = false,
 }: SectionHeadingProps) {
   const isDark = theme === "dark";
 
@@ -46,14 +49,26 @@ export function SectionHeading({
           {badge}
         </span>
       )}
-      <h2
-        className={cn(
-          "text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight",
-          isDark ? "text-[#FFFFFF]" : "text-[#000000]"
-        )}
-      >
-        {title}
-      </h2>
+      {enableTypewriter ? (
+        <TypewriterHeading
+          as="h2"
+          text={title}
+          className={cn(
+            "text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight",
+            align === "center" ? "text-center mx-auto" : "text-left",
+            isDark ? "text-[#FFFFFF]" : "text-[#000000]"
+          )}
+        />
+      ) : (
+        <h2
+          className={cn(
+            "text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight font-heading",
+            isDark ? "text-[#FFFFFF]" : "text-[#000000]"
+          )}
+        >
+          {title}
+        </h2>
+      )}
       {subtitle && (
         <p
           className={cn(

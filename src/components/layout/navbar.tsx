@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { Container } from "@/components/shared/container";
@@ -18,18 +19,16 @@ export function Navbar() {
     <header className="sticky top-0 z-50 bg-[#FFFFFF]/95 backdrop-blur-md border-b border-[#E5E5E5]">
       <Container size="wide">
         <div className="flex h-20 items-center justify-between">
-          {/* Brand Logo & Wordmark */}
-          <Link href="/" className="group flex items-center space-x-3.5">
-            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#000000] text-[#FFFFFF] font-bold text-xl font-heading group-hover:border-[#C6A76B] transition-all border border-[#000000]">
-              <span className="group-hover:text-[#C6A76B] transition-colors">S</span>
-            </span>
-            <div className="flex flex-col">
-              <span className="font-heading font-extrabold text-base text-[#000000] leading-tight tracking-tight">
-                SHUKLA<span className="text-[#C6A76B]">.</span>
-              </span>
-              <span className="text-[10px] uppercase tracking-wider text-[#666666] font-semibold">
-                Electronic & Software
-              </span>
+          {/* Brand Logo */}
+          <Link href="/" className="group flex items-center py-1">
+            <div className="relative h-12 w-48 sm:h-14 sm:w-56 transition-transform group-hover:scale-[1.02]">
+              <Image
+                src="/images/logo-trimmed.png"
+                alt="Shukla Electronic & Computer Services"
+                fill
+                priority
+                className="object-contain object-left"
+              />
             </div>
           </Link>
 
@@ -62,17 +61,10 @@ export function Navbar() {
           <div className="hidden sm:flex items-center space-x-3">
             <Button
               href="/contact?type=repair"
-              variant="secondary"
-              size="sm"
-            >
-              Shop Check-In
-            </Button>
-            <Button
-              href="/contact?type=digital"
               variant="primary"
               size="sm"
             >
-              Get a Quote
+              Shop Check-In
             </Button>
           </div>
 
@@ -120,24 +112,15 @@ export function Navbar() {
             <div className="text-xs text-[#666666] px-2 font-medium">
               Workshop: {siteConfig.contact.workingHours}
             </div>
-            <div className="grid grid-cols-2 gap-3">
+            <div>
               <Button
                 href="/contact?type=repair"
-                variant="secondary"
-                size="sm"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full text-center"
-              >
-                In-Shop Drop-off
-              </Button>
-              <Button
-                href="/contact?type=digital"
                 variant="primary"
                 size="sm"
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full text-center"
               >
-                Quote Request
+                Shop Check-In
               </Button>
             </div>
           </div>

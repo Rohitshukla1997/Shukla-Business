@@ -3,6 +3,7 @@ import { Container } from "@/components/shared/container";
 import { SectionWrapper } from "@/components/shared/section-wrapper";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { Button } from "@/components/shared/button";
+import { TypewriterHeading } from "@/components/sections/typewriter-heading";
 import { Store, Code, HeartHandshake, ShieldCheck } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -20,9 +21,10 @@ export default function AboutPage() {
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F4F4F4] border border-[#C6A76B]/40 text-[#C6A76B] text-xs font-bold uppercase tracking-wider">
               Our Story & Philosophy
             </span>
-            <h1 className="text-4xl sm:text-6xl font-extrabold font-heading text-[#000000]">
-              Bridging Hardware Craft with Modern Software.
-            </h1>
+            <TypewriterHeading
+              text="Bridging Hardware Craft with Modern Software."
+              className="text-4xl sm:text-6xl text-left"
+            />
             <p className="text-lg text-[#666666] leading-relaxed font-normal">
               We started with a simple belief: whether you are repairing a
               critical circuit board or architecting a digital platform, true

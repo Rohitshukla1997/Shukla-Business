@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Container } from "@/components/shared/container";
 import { SectionWrapper } from "@/components/shared/section-wrapper";
 import { ContactForm } from "@/components/contact/contact-form";
+import { TypewriterHeading } from "@/components/sections/typewriter-heading";
 import { siteConfig } from "@/config/site";
 import { MapPin, Phone, Mail, Clock, Store, ExternalLink } from "lucide-react";
 
@@ -20,9 +21,10 @@ export default function ContactPage() {
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F4F4F4] border border-[#C6A76B]/40 text-[#C6A76B] text-xs font-bold uppercase tracking-wider">
               Nagpur Workshop & Digital Lab
             </span>
-            <h1 className="text-4xl sm:text-6xl font-extrabold font-heading text-[#000000]">
-              Contact & Workshop Location
-            </h1>
+            <TypewriterHeading
+              text="Contact & Workshop Location"
+              className="text-4xl sm:text-6xl text-left"
+            />
             <p className="text-lg text-[#666666] leading-relaxed font-normal">
               Have a device that needs precision diagnostics, or want to discuss a custom digital
               solution? Reach out directly or visit our workshop counter in Nagpur.

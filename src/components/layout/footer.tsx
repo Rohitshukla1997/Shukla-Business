@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { MapPin, Clock, Phone, Mail, ShieldAlert, ExternalLink } from "lucide-react";
 import { Container } from "@/components/shared/container";
 import { siteConfig } from "@/config/site";
@@ -41,14 +42,16 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 pb-14 border-b border-[#333333]">
           {/* Brand Info */}
           <div className="lg:col-span-2 space-y-5">
-            <div className="flex items-center space-x-3.5">
-              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#000000] border border-[#C6A76B] text-[#C6A76B] font-bold text-xl font-heading">
-                S
-              </span>
-              <span className="font-heading font-extrabold text-xl text-[#FFFFFF]">
-                Shukla Electronic & Computer Services
-              </span>
-            </div>
+            <Link href="/" className="inline-block py-1">
+              <div className="relative h-12 w-48 sm:h-14 sm:w-56">
+                <Image
+                  src="/images/logo-dark-mode.png"
+                  alt="Shukla Electronic & Computer Services"
+                  fill
+                  className="object-contain object-left"
+                />
+              </div>
+            </Link>
             <p className="text-sm text-[#CCCCCC] max-w-sm leading-relaxed font-normal">
               Engineering reliable component-level repairs alongside clean, modern digital systems
               and custom web solutions.

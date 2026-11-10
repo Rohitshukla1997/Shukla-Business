@@ -5,6 +5,7 @@ import { SectionWrapper } from "@/components/shared/section-wrapper";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { Button } from "@/components/shared/button";
 import { ServiceCard } from "@/components/cards/service-card";
+import { TypewriterHeading } from "@/components/sections/typewriter-heading";
 import { servicesData } from "@/config/services";
 import { siteConfig } from "@/config/site";
 
@@ -26,9 +27,10 @@ export default function ElectronicsRepairPage() {
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F4F4F4] border border-[#C6A76B]/40 text-[#C6A76B] text-xs font-bold uppercase tracking-wider">
               Division A • Physical Workshop Services Only
             </span>
-            <h1 className="text-4xl sm:text-6xl font-extrabold font-heading text-[#000000]">
-              Component-Level Electronics Repair
-            </h1>
+            <TypewriterHeading
+              text="Component-Level Electronics Repair"
+              className="text-4xl sm:text-6xl text-left"
+            />
             <p className="text-lg text-[#666666] leading-relaxed font-normal">
               We rescue broken logic boards, power supplies, and audio circuits through precision micro-soldering.
               All repairs are conducted strictly at our in-store workbench in Nagpur.
@@ -78,6 +80,7 @@ export default function ElectronicsRepairPage() {
             badgeVariant="gold"
             title="Comprehensive Hardware Solutions"
             subtitle="Inspected and repaired by experienced hardware technicians using genuine components."
+            enableTypewriter={true}
           />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

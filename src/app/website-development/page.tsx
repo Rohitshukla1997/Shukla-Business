@@ -4,6 +4,7 @@ import { Container } from "@/components/shared/container";
 import { SectionWrapper } from "@/components/shared/section-wrapper";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { Button } from "@/components/shared/button";
+import { TypewriterHeading } from "@/components/sections/typewriter-heading";
 
 export const metadata: Metadata = {
   title: "Website Development | Modern Business Websites",
@@ -20,9 +21,10 @@ export default function WebsiteDevelopmentPage() {
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F4F4F4] border border-[#C6A76B]/40 text-[#C6A76B] text-xs font-bold uppercase tracking-wider">
               Division B • Digital Solutions
             </span>
-            <h1 className="text-4xl sm:text-6xl font-extrabold font-heading text-[#000000]">
-              Software and Website
-            </h1>
+            <TypewriterHeading
+              text="Software and Website"
+              className="text-4xl sm:text-6xl text-left"
+            />
             <p className="text-lg text-[#666666] leading-relaxed font-normal">
               We design and code clean, editorial websites for businesses that
               demand sub-second load speeds, modern aesthetics, and superior
@@ -40,6 +42,7 @@ export default function WebsiteDevelopmentPage() {
             badgeVariant="gold"
             title="Beyond Generic Best Experience in Website."
             subtitle="Generic page builders create slow, bloated code. We engineer bespoke Full stack development systems with zero compromises."
+            enableTypewriter={true}
           />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -100,6 +103,7 @@ export default function WebsiteDevelopmentPage() {
             title="Tailored Packages for Every Growth Stage"
             subtitle="Clear delivery milestones and complete source-code ownership with zero monthly licensing traps."
             align="center"
+            enableTypewriter={true}
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
