@@ -59,12 +59,9 @@ export default function HomePage() {
       <section className="relative bg-[#FFFFFF] pt-8 pb-16 md:pt-12 md:pb-20 border-b border-[#E5E5E5]">
         <Container size="wide">
           <div className="max-w-4xl mx-auto text-center space-y-6">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F4F4F4] border border-[#C6A76B]/40 text-[#C6A76B] text-xs font-bold uppercase tracking-wider mb-2">
-              <span>Nagpur, Maharashtra • Physical Workshop &amp; Web Lab</span>
-            </div>
-
             <h1 className="sr-only">
-              Electronics &amp; Computer Repair and Website Development in Nagpur — Shukla Electronic &amp; Computer Services
+              Electronics &amp; Computer Repair and Website Development in
+              Nagpur — Shukla Electronic &amp; Computer Services
             </h1>
 
             <TypewriterHeading
