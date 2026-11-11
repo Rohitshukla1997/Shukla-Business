@@ -3,7 +3,7 @@ import { SecondHandDealsSection } from "@/components/sections/second-hand-deals-
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Buy & Sell Certified Pre-Owned Electronics in Nagpur",
+  title: "Pre-Owned Electronics in Nagpur",
   description:
     "Buy and sell tested second-hand smart LED TVs, laptops, computers, and electronic appliances in Nagpur. 25-point workshop inspection, fair cash valuation, and direct in-shop deals.",
   keywords: [

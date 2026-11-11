@@ -10,7 +10,7 @@ import { servicesData } from "@/config/services";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Electronics & Computer Repair in Nagpur | In-Store Workshop",
+  title: "Electronics & Laptop Repair Nagpur",
   description:
     "Expert component-level electronics repair in Nagpur. Laptop logic board micro-soldering, desktop computer repair, 4K LED TV service, and appliance PCB diagnostics. Physical workshop visit only.",
   keywords: [

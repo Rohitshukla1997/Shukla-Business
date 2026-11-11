@@ -30,11 +30,14 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} | Electronics Repair & Web Development Nagpur`,
-    template: `%s | ${siteConfig.shortName}`,
+    default: "Shukla Services | Electronics Repair & Web Dev Nagpur",
+    template: "%s | Shukla Services",
   },
   description: siteConfig.description,
   keywords: [
+    "Shukla Electronic Nagpur",
+    "Shukla Electronics",
+    "Shukla Electronics Nagpur",
     "Electronics repair in Nagpur",
     "Laptop repair in Nagpur",
     "Computer repair in Nagpur",

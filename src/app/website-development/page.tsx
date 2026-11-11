@@ -9,7 +9,7 @@ import { TypewriterHeading } from "@/components/sections/typewriter-heading";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Website Development in Nagpur | Custom Next.js Business Websites",
+  title: "Website Development in Nagpur",
   description:
     "Professional website development in Nagpur. We engineer fast, clean Next.js business websites, editorial UI/UX, and local SEO systems with sub-second performance.",
   keywords: [

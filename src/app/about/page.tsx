@@ -9,7 +9,7 @@ import { Store, Code, HeartHandshake, ShieldCheck } from "lucide-react";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "About Us | Hardware Craft & Software Engineering in Nagpur",
+  title: "About Hardware & Software Craft",
   description:
     "Discover Shukla Electronic & Computer Services in Nagpur. Founded on component-level electronics craft, transparent workbench diagnostics, and custom software engineering.",
   alternates: {

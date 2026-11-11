@@ -7,7 +7,7 @@ import { siteConfig } from "@/config/site";
 import { MapPin, Phone, Mail, Clock, Store, ExternalLink } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Contact & Workshop Location Nagpur | Shukla Services",
+  title: "Contact & Workshop Location",
   description:
     "Visit our physical electronics repair workshop in Tukdoji Complex, Nagpur (Tue–Sun, 10 AM – 9 PM). Phone: +91 98765 43210. Direct check-in & web consultations.",
   alternates: {
