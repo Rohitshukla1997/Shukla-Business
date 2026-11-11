@@ -6,7 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
     short_name: "Shukla Electronic",
     description:
       "Electronics and computer repair services and professional website development in Nagpur.",
-    start_url: "https://shuklaelectronic.vercel.app/",
+    start_url: "/",
     display: "standalone",
     background_color: "#FFFFFF",
     theme_color: "#000000",
