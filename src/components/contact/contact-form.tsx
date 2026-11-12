@@ -67,7 +67,7 @@ export function ContactForm() {
       setSubmissionError(
         err instanceof Error
           ? err.message
-          : "An error occurred while submitting. Please try calling directly."
+          : "An error occurred while submitting. Please try calling directly.",
       );
     }
   };
@@ -100,7 +100,7 @@ export function ContactForm() {
             </span>
             <p className="font-normal text-[#666666]">
               Please bring your equipment directly to our physical workshop
-              during business hours (Mon–Sat, 10:00 AM – 8:30 PM) for intake and
+              during business hours (Tue–Sun, 10:00 AM – 9:00 PM) for intake and
               inspection.
             </p>
           </div>
