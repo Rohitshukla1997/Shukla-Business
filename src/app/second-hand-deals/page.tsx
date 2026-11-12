@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     canonical: "/second-hand-deals",
   },
   openGraph: {
-    title: "Shukla Services Nagpur",
+    title: "Shukla Electronics Nagpur",
     description:
       "Repair electronics, sales of accessories, electrical materials, and verified pre-owned LED TVs and laptops in Nagpur with fair valuation.",
     url: `${siteConfig.url}/second-hand-deals`,
