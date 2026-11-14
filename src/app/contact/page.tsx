@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     canonical: "/contact",
   },
   openGraph: {
-    title: "Contact & Workshop Location | Shukla Services Nagpur",
+    title: "Contact & Workshop Location | Shukla Electronic Nagpur",
     description:
       "Physical workshop counter in Nagpur for electronics repair & digital solutions. Get directions and submit service inquiries.",
     url: `${siteConfig.url}/contact`,
