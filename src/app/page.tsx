@@ -281,7 +281,7 @@ export default function HomePage() {
                 Ready to talk? Reach out today.
               </h3>
               <p className="text-xs sm:text-sm text-[#CCCCCC] max-w-lg">
-                Tus–Sun 10:00 AM – 9:00 PM at our Nagpur workshop, or send an
+                Tue–Sun 10:00 AM – 9:00 PM at our Nagpur workshop, or send an
                 inquiry online.
               </p>
             </div>
